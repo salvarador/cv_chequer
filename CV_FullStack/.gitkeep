@@ -1,0 +1,15 @@
+# CV Directory Structure
+# 
+# Place your CV PDF files in the following subdirectories:
+# 
+# CV_FullStack/
+# ├── EPAM/          - EPAM candidate CVs
+# ├── SR/            - Senior role candidate CVs  
+# └── Coderio/       - Coderio candidate CVs
+#
+# Example files you can test with:
+# - CV_FullStack/EPAM/CV_John_Doe.pdf
+# - CV_FullStack/SR/CV_Jane_Smith.pdf
+# 
+# This .gitkeep file ensures the directory structure is preserved in git
+# while actual CV files are ignored for privacy.

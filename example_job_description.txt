@@ -1,0 +1,41 @@
+Senior Full Stack Developer - Remote
+
+We are seeking a highly skilled Senior Full Stack Developer to join our growing engineering team. The ideal candidate will have extensive experience in modern web development technologies and a passion for building scalable, high-performance applications.
+
+Key Responsibilities:
+- Design and develop full-stack web applications using React, Node.js, and TypeScript
+- Build and maintain RESTful APIs and microservices architecture
+- Work with cloud platforms (AWS preferred) for deployment and scaling
+- Collaborate with cross-functional teams including product managers, designers, and other developers
+- Mentor junior developers and participate in code reviews
+- Implement automated testing and CI/CD pipelines
+- Optimize application performance and ensure scalability
+
+Required Qualifications:
+- 5+ years of professional software development experience
+- Strong proficiency in JavaScript/TypeScript and modern frameworks (React, Angular, or Vue.js)
+- Experience with Node.js and Express.js for backend development
+- Solid understanding of database technologies (PostgreSQL, MongoDB)
+- Experience with cloud platforms, preferably AWS (EC2, S3, Lambda, RDS)
+- Knowledge of containerization technologies (Docker, Kubernetes)
+- Experience with version control systems (Git) and collaborative development workflows
+- Understanding of software testing principles and test-driven development
+- Strong problem-solving skills and attention to detail
+- Excellent communication and teamwork abilities
+- Experience leading technical projects and mentoring team members
+
+Preferred Qualifications:
+- Experience with GraphQL and Apollo
+- Knowledge of DevOps practices and infrastructure as code (Terraform, CloudFormation)
+- Experience with message queues and event-driven architectures
+- Familiarity with Azure or Google Cloud Platform
+- Experience with mobile app development (React Native)
+- Bachelor's degree in Computer Science or related field
+
+Soft Skills:
+- Strong leadership and team collaboration skills
+- Excellent written and verbal communication
+- Ability to work independently and manage multiple projects
+- Creative problem-solving approach
+- Adaptability to new technologies and changing requirements
+- Time management and organizational skills
