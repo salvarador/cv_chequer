@@ -2,7 +2,7 @@
 
 import os
 import glob
-from cv_analyzer import CVAnalyzer
+from .cv_analyzer import CVAnalyzer
 import json
 from tabulate import tabulate
 from typing import List, Dict

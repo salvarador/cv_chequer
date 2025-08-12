@@ -14,14 +14,14 @@ import logging
 from datetime import datetime
 
 # Import CV Chequer modules
-from cv_analyzer import CVAnalyzer
-from job_matcher import JobMatcher
-from batch_analyzer import BatchCVAnalyzer
-from batch_job_matcher import BatchJobMatcher
-from config import get_aws_session, validate_aws_services
+from ..core.cv_analyzer import CVAnalyzer
+from ..core.job_matcher import JobMatcher
+from ..core.batch_analyzer import BatchCVAnalyzer
+from ..core.batch_job_matcher import BatchJobMatcher
+from ..core.config import get_aws_session, validate_aws_services
 
 # Import Pydantic models
-from models import (
+from .models import (
     CVAnalysisResponse,
     JobMatchRequest,
     JobMatchResponse,

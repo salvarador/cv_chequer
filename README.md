@@ -100,10 +100,10 @@ python setup_check.py
 
 ```bash
 # Start the API server
-python start_api.py
+python scripts/start_api.py
 
-# Or using uvicorn directly
-uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+# Or using uvicorn directly from project root
+uvicorn src.api.main:app --host 0.0.0.0 --port 8000 --reload
 ```
 
 The API will be available at:
@@ -158,7 +158,7 @@ POST /batch-match-cvs-job
 
 ```bash
 # Run the comprehensive API test suite
-python api_example.py
+python examples/api_example.py
 
 # Or test individual endpoints using curl:
 
@@ -182,12 +182,12 @@ curl -X POST "http://localhost:8000/analyze-job-description" \
 
 Analyze a single CV:
 ```bash
-python cv_analyzer.py "CV_FullStack/EPAM/CV Brayan Urbina Gomez.pdf"
+python src/cli/analyze_cv.py "data/CV_FullStack/EPAM/CV Brayan Urbina Gomez.pdf"
 ```
 
 Batch analyze multiple CVs:
 ```bash
-python batch_analyzer.py CV_FullStack/EPAM
+python src/cli/batch_analyze.py data/CV_FullStack/EPAM
 ```
 
 #### Job Description Matching
@@ -195,27 +195,18 @@ python batch_analyzer.py CV_FullStack/EPAM
 Compare single CV with job description:
 ```bash
 # Using job description file
-python job_matcher.py "CV_FullStack/EPAM/CV Brayan Urbina Gomez.pdf" --job-file example_job_description.txt
+python src/cli/match_job.py "data/CV_FullStack/EPAM/CV Brayan Urbina Gomez.pdf" --job-file examples/example_job_description.txt
 
 # Using direct text input
-python job_matcher.py "CV_FullStack/EPAM/CV Brayan Urbina Gomez.pdf" --job-text "We are looking for a Senior Developer with React and AWS experience..."
+python src/cli/match_job.py "data/CV_FullStack/EPAM/CV Brayan Urbina Gomez.pdf" --job-text "We are looking for a Senior Developer with React and AWS experience..."
 
 # Interactive mode (enter job description when prompted)
-python job_matcher.py "CV_FullStack/EPAM/CV Brayan Urbina Gomez.pdf"
-```
-
-Batch compare multiple CVs with job description:
-```bash
-# Compare all CVs in directory with job description
-python batch_job_matcher.py CV_FullStack/EPAM --job-file example_job_description.txt
-
-# Show top 3 candidates with detailed analysis
-python batch_job_matcher.py CV_FullStack/EPAM --job-file example_job_description.txt --top 3
+python src/cli/match_job.py "data/CV_FullStack/EPAM/CV Brayan Urbina Gomez.pdf"
 ```
 
 #### Interactive Examples
 ```bash
-python example_usage.py
+python examples/example_usage.py
 ```
 
 ## Troubleshooting
@@ -224,7 +215,7 @@ If you see "UnrecognizedClientException" or credential errors:
 
 1. **Run the setup verification script:**
    ```bash
-   python setup_check.py
+   python src/utils/setup_check.py
    ```
 
 2. **Check your AWS credentials are valid:**

@@ -6,7 +6,7 @@ from tabulate import tabulate
 import os
 import argparse
 from botocore.exceptions import ClientError, NoCredentialsError
-from config import get_aws_session, BEDROCK_MODEL_ID
+from .config import get_aws_session, BEDROCK_MODEL_ID
 import pdfplumber
 import PyPDF2
 import io

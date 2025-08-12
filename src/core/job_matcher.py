@@ -3,8 +3,8 @@
 import json
 from typing import Dict, List, Any, Tuple
 from tabulate import tabulate
-from cv_analyzer import CVAnalyzer
-from config import get_aws_session, BEDROCK_MODEL_ID
+from .cv_analyzer import CVAnalyzer
+from .config import get_aws_session, BEDROCK_MODEL_ID
 import os
 import argparse
 

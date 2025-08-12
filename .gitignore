@@ -52,14 +52,14 @@ ehthumbs.db
 Thumbs.db
 
 # CV folder (contains actual CV files)
-CV_FullStack/*.pdf
-CV_FullStack/*/*.pdf
-CV_FullStack/*/*/*.pdf
+data/CV_FullStack/*.pdf
+data/CV_FullStack/*/*.pdf
+data/CV_FullStack/*/*/*.pdf
 
 # But keep the directory structure
-!CV_FullStack/.gitkeep
-!CV_FullStack/*/.gitkeep
-!CV_FullStack/*/*/.gitkeep
+!data/CV_FullStack/.gitkeep
+!data/CV_FullStack/*/.gitkeep
+!data/CV_FullStack/*/*/.gitkeep
 
 # Portal and results files
 portal_otc.txt

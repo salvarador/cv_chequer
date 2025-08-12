@@ -3,10 +3,14 @@
 Example usage of the CV Analyzer and Job Matcher
 """
 
-from cv_analyzer import CVAnalyzer
-from batch_analyzer import BatchCVAnalyzer
-from job_matcher import JobMatcher
-from batch_job_matcher import BatchJobMatcher
+import sys
+import os
+sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
+
+from src.core.cv_analyzer import CVAnalyzer
+from src.core.batch_analyzer import BatchCVAnalyzer
+from src.core.job_matcher import JobMatcher
+from src.core.batch_job_matcher import BatchJobMatcher
 import os
 
 
@@ -18,7 +22,7 @@ def analyze_single_cv():
     analyzer = CVAnalyzer()
     
     # Example with one of the CVs in the directory
-    cv_path = "CV_FullStack/EPAM/CV Brayan Urbina Gomez.pdf"
+    cv_path = "data/CV_FullStack/EPAM/CV Brayan Urbina Gomez.pdf"
     
     if os.path.exists(cv_path):
         result = analyzer.analyze_cv(cv_path)
@@ -26,7 +30,7 @@ def analyze_single_cv():
     else:
         print(f"CV file not found: {cv_path}")
         print("Available CVs:")
-        for root, dirs, files in os.walk("CV_FullStack"):
+        for root, dirs, files in os.walk("data/CV_FullStack"):
             for file in files:
                 if file.endswith('.pdf'):
                     print(f"  - {os.path.join(root, file)}")
@@ -40,7 +44,7 @@ def analyze_batch_cvs():
     batch_analyzer = BatchCVAnalyzer()
     
     # Analyze all CVs in a specific directory
-    directory = "CV_FullStack/EPAM"
+    directory = "data/CV_FullStack/EPAM"
     
     if os.path.exists(directory):
         batch_analyzer.analyze_directory(directory)
@@ -58,8 +62,8 @@ def job_match_single_cv():
     matcher = JobMatcher()
     
     # Example CV and job description
-    cv_path = "CV_FullStack/EPAM/CV Brayan Urbina Gomez.pdf"
-    job_desc_file = "example_job_description.txt"
+    cv_path = "data/CV_FullStack/EPAM/CV Brayan Urbina Gomez.pdf"
+    job_desc_file = "examples/example_job_description.txt"
     
     if os.path.exists(cv_path) and os.path.exists(job_desc_file):
         with open(job_desc_file, 'r', encoding='utf-8') as f:
@@ -81,8 +85,8 @@ def batch_job_matching():
     batch_matcher = BatchJobMatcher()
     
     # Example directory and job description
-    directory = "CV_FullStack/EPAM"
-    job_desc_file = "example_job_description.txt"
+    directory = "data/CV_FullStack/EPAM"
+    job_desc_file = "examples/example_job_description.txt"
     
     if os.path.exists(directory) and os.path.exists(job_desc_file):
         with open(job_desc_file, 'r', encoding='utf-8') as f:

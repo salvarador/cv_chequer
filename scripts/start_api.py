@@ -9,9 +9,10 @@ import sys
 import os
 from pathlib import Path
 
-# Add current directory to Python path
+# Add project root to Python path
 current_dir = Path(__file__).parent
-sys.path.insert(0, str(current_dir))
+project_root = current_dir.parent
+sys.path.insert(0, str(project_root))
 
 def main():
     """Main startup function."""
@@ -19,7 +20,7 @@ def main():
     print("=" * 50)
     
     # Check if .env file exists
-    env_file = current_dir / ".env"
+    env_file = project_root / ".env"
     if not env_file.exists():
         print("⚠️  Warning: .env file not found!")
         print("   Make sure to configure your AWS credentials.")
@@ -44,7 +45,7 @@ def main():
     try:
         # Start the server
         uvicorn.run(
-            "main:app",
+            "src.api.main:app",
             host=host,
             port=port,
             reload=reload,

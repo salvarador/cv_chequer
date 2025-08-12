@@ -3,7 +3,7 @@
 import os
 import glob
 import json
-from job_matcher import JobMatcher
+from .job_matcher import JobMatcher
 from tabulate import tabulate
 from typing import List, Dict, Any
 import argparse
