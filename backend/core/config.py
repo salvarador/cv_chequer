@@ -54,7 +54,7 @@ def validate_aws_services():
     try:
         textract = session.client('textract')
         # Try a simple operation to validate access
-        textract.describe_document_text_detection(JobId='test-job-id')
+        textract.get_document_text_detection(JobId='test-job-id')
     except ClientError as e:
         if e.response['Error']['Code'] in ['InvalidJobIdException', 'InvalidParameterException']:
             print("✓ Textract access confirmed")
@@ -66,9 +66,20 @@ def validate_aws_services():
     # Test Bedrock access
     try:
         bedrock = session.client('bedrock-runtime')
-        # List available models to test access
-        bedrock.list_foundation_models()
-        print("✓ Bedrock access confirmed")
+        # Bedrock Runtime does not support listing models; instead, test access by invoking a model
+        try:
+            response = bedrock.invoke_model(
+                modelId=BEDROCK_MODEL_ID,
+                contentType="application/json",
+                accept="application/json",
+                body='{"input": "ping"}'
+            )
+            print("✓ Bedrock access confirmed")
+        except ClientError as e:
+            if e.response['Error']['Code'] == 'AccessDeniedException':
+                raise Exception("Access denied to AWS Bedrock. Please check your permissions.")
+            else:
+                print(f"⚠ Bedrock access check failed: {e.response['Error']['Code']}")
     except ClientError as e:
         if e.response['Error']['Code'] == 'AccessDeniedException':
             raise Exception("Access denied to AWS Bedrock. Please check your permissions.")

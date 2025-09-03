@@ -10,7 +10,7 @@ import argparse
 # Add parent directory to path for imports
 sys.path.append(os.path.join(os.path.dirname(__file__), '../..'))
 
-from src.core.job_matcher import JobMatcher
+from backend.core.job_matcher import JobMatcher
 
 
 def main():

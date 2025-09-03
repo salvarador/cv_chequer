@@ -42,7 +42,7 @@ def test_cv_analysis():
     print("\n📄 Testing CV analysis...")
     
     # Look for sample CV files
-    cv_dir = Path("CV_FullStack/EPAM")
+    cv_dir = Path("data/CV_FullStack/EPAM")
     if not cv_dir.exists():
         print("❌ Sample CV directory not found. Skipping CV analysis test.")
         return

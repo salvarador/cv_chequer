@@ -10,7 +10,7 @@ import argparse
 # Add parent directory to path for imports
 sys.path.append(os.path.join(os.path.dirname(__file__), '../..'))
 
-from src.core.cv_analyzer import CVAnalyzer
+from backend.core.cv_analyzer import CVAnalyzer
 
 
 def main():

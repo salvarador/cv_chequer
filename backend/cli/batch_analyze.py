@@ -10,7 +10,7 @@ import argparse
 # Add parent directory to path for imports
 sys.path.append(os.path.join(os.path.dirname(__file__), '../..'))
 
-from src.core.batch_analyzer import BatchCVAnalyzer
+from backend.core.batch_analyzer import BatchCVAnalyzer
 
 
 def main():

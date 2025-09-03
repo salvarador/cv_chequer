@@ -7,10 +7,10 @@ import sys
 import os
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 
-from src.core.cv_analyzer import CVAnalyzer
-from src.core.batch_analyzer import BatchCVAnalyzer
-from src.core.job_matcher import JobMatcher
-from src.core.batch_job_matcher import BatchJobMatcher
+from backend.core.cv_analyzer import CVAnalyzer
+from backend.core.batch_analyzer import BatchCVAnalyzer
+from backend.core.job_matcher import JobMatcher
+from backend.core.batch_job_matcher import BatchJobMatcher
 import os
 
 

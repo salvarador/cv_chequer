@@ -1,6 +1,6 @@
 # CV Chequer - AI-Powered CV Analysis & Job Matching
 
-A comprehensive Python application with both CLI tools and REST API that uses AWS Textract to extract text from CV PDFs and AWS Bedrock to analyze and categorize the information. Now includes a modern FastAPI backend for web integration.
+A comprehensive Python application with both CLI tools and REST API that uses AWS Textract to extract text from CV PDFs and AWS Bedrock to analyze and categorize the information. Now includes a modern FastAPI backend and React frontend for complete web integration.
 
 ## Features
 
@@ -37,15 +37,30 @@ A comprehensive Python application with both CLI tools and REST API that uses AW
   - Batch processing endpoints
   - Comprehensive error handling and validation
   - CORS support for web integration
+- **React Frontend** - Modern web interface with:
+  - Responsive design with Tailwind CSS
+  - Drag-and-drop file upload
+  - Real-time analysis progress
+  - Interactive results visualization
+  - Batch processing interface
+  - Mobile-friendly design
 
 ## Setup
 
 ### Quick Setup (Recommended)
 
 ```bash
-# Run the automated installation script
-python install_requirements.py
+# Install backend dependencies
+python scripts/install_requirements.py
+
+# Start the backend API server
+python scripts/start_api.py
+
+# In a new terminal, start the frontend (requires Node.js 18+)
+python start_frontend.py
 ```
+
+The frontend will be available at http://localhost:3000 and the API at http://localhost:8000.
 
 ### Manual Setup
 
@@ -94,6 +109,31 @@ python setup_check.py
 
 ## Usage
 
+### React Frontend (Recommended)
+
+The easiest way to use CV Chequer is through the modern web interface:
+
+1. **Start the backend API:**
+   ```bash
+   python scripts/start_api.py
+   ```
+
+2. **Start the frontend (in a new terminal):**
+   ```bash
+   python start_frontend.py
+   ```
+
+3. **Open your browser:** Navigate to http://localhost:3000
+
+#### Frontend Features:
+- **Dashboard**: Overview of all features with API status monitoring
+- **CV Analysis**: Upload and analyze single CV files with interactive results
+- **Job Matching**: Compare CVs against job descriptions with detailed scoring
+- **Batch Analysis**: Process multiple CVs simultaneously
+- **Batch Matching**: Rank multiple candidates against job requirements
+- **Job Analysis**: Extract requirements from job descriptions
+- **Responsive Design**: Works on desktop, tablet, and mobile devices
+
 ### FastAPI REST API
 
 #### Starting the API Server
@@ -103,7 +143,7 @@ python setup_check.py
 python scripts/start_api.py
 
 # Or using uvicorn directly from project root
-uvicorn src.api.main:app --host 0.0.0.0 --port 8000 --reload
+uvicorn backend.api.main:app --host 0.0.0.0 --port 8000 --reload
 ```
 
 The API will be available at:
@@ -182,12 +222,12 @@ curl -X POST "http://localhost:8000/analyze-job-description" \
 
 Analyze a single CV:
 ```bash
-python src/cli/analyze_cv.py "data/CV_FullStack/EPAM/CV Brayan Urbina Gomez.pdf"
+python backend/cli/analyze_cv.py "data/CV_FullStack/EPAM/CV Brayan Urbina Gomez.pdf"
 ```
 
 Batch analyze multiple CVs:
 ```bash
-python src/cli/batch_analyze.py data/CV_FullStack/EPAM
+python backend/cli/batch_analyze.py data/CV_FullStack/EPAM
 ```
 
 #### Job Description Matching
@@ -195,13 +235,13 @@ python src/cli/batch_analyze.py data/CV_FullStack/EPAM
 Compare single CV with job description:
 ```bash
 # Using job description file
-python src/cli/match_job.py "data/CV_FullStack/EPAM/CV Brayan Urbina Gomez.pdf" --job-file examples/example_job_description.txt
+python backend/cli/match_job.py "data/CV_FullStack/EPAM/CV Brayan Urbina Gomez.pdf" --job-file examples/example_job_description.txt
 
 # Using direct text input
-python src/cli/match_job.py "data/CV_FullStack/EPAM/CV Brayan Urbina Gomez.pdf" --job-text "We are looking for a Senior Developer with React and AWS experience..."
+python backend/cli/match_job.py "data/CV_FullStack/EPAM/CV Brayan Urbina Gomez.pdf" --job-text "We are looking for a Senior Developer with React and AWS experience..."
 
 # Interactive mode (enter job description when prompted)
-python src/cli/match_job.py "data/CV_FullStack/EPAM/CV Brayan Urbina Gomez.pdf"
+python backend/cli/match_job.py "data/CV_FullStack/EPAM/CV Brayan Urbina Gomez.pdf"
 ```
 
 #### Interactive Examples
@@ -215,7 +255,7 @@ If you see "UnrecognizedClientException" or credential errors:
 
 1. **Run the setup verification script:**
    ```bash
-   python src/utils/setup_check.py
+  python backend/utils/setup_check.py
    ```
 
 2. **Check your AWS credentials are valid:**
@@ -231,10 +271,42 @@ If you see "UnrecognizedClientException" or credential errors:
 
 ## Requirements
 
+### Backend
 - AWS account with Textract and Bedrock access
 - Python 3.8+
 - AWS credentials configured
-- For API: FastAPI, Uvicorn, and Python-multipart (installed via requirements.txt)
+- Dependencies: FastAPI, Uvicorn, Boto3, and others (see requirements.txt)
+
+### Frontend
+- Node.js 18+
+- npm (comes with Node.js)
+- Modern web browser
+
+## Project Structure
+
+```
+cv_chequer/
+├── frontend/                 # React TypeScript frontend
+│   ├── backend/
+│   │   ├── components/      # Reusable UI components
+│   │   ├── pages/           # Page components
+│   │   ├── services/        # API integration
+│   │   ├── types/           # TypeScript definitions
+│   │   └── utils/           # Helper functions
+│   ├── public/              # Static assets
+│   ├── package.json         # Frontend dependencies
+│   └── README.md            # Frontend documentation
+├── backend/                 # Python backend source
+│   ├── api/                 # FastAPI application
+│   ├── cli/                 # Command-line interfaces
+│   ├── core/                # Core analysis logic
+│   └── utils/               # Utility functions
+├── scripts/                 # Startup and setup scripts
+├── examples/                # Usage examples
+├── data/                    # Sample CV data
+├── start_frontend.py        # Frontend startup script
+└── README.md                # Main documentation
+```
 
 ## Output
 
